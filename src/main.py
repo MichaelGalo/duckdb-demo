@@ -3,7 +3,7 @@ import duckdb
 
 def main():
     # line 4 will create the db if it doesn't already exist
-    conn = duckdb.connect("local_db.duckdb")
+    conn = duckdb.connect("./data/local_db.duckdb")
     conn.execute(
         "CREATE TABLE transactions AS SELECT * FROM 'data/transactions.parquet'"
     )
@@ -11,6 +11,7 @@ def main():
     transactions_df["amount"] = transactions_df["amount"] * 1.1
     transactions_df.to_parquet("data/transactions_transformed.parquet", index=False)
 
+    # in memory is faster, but does not persist for forensics or visualization
     memory_conn = duckdb.connect(":memory:")
     memory_conn.execute(
         "CREATE TABLE transactions AS SELECT * FROM 'data/transactions.parquet'"
