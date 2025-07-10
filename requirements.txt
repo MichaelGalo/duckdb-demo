@@ -1,4 +1,6 @@
 # Add your project dependencies here
 pandas
 pyarrow
-duckdb
+duckdb 
+dbt-duckdb
+pip-tools
