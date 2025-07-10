@@ -1,4 +1,8 @@
-{{config(materialized = 'table')}}
+{{config(materialized = 'table',
+  tags=['marts', 'customer'],
+  indexes=[
+    {'columns': ['customer_id'], 'unique':true}
+  ])}}
 
 select
   customer_id,
@@ -16,3 +20,4 @@ select
 
 from {{ref('stg_transactions')}}
 group by customer_id
+order by total_amount desc
