@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: Cleaned and standardized transaction data
+    columns:
+      - name: transaction_id
+        description: Unique identifier for each transaction
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Customer who made the transaction
+        tests:
+          - not_null
+
+      - name: amount
+        description: Transaction amount
+        tests:
+          - not_null
+
+      - name: transaction_type
+        description: Credit or debit classification
+        tests:
+          - accepted_values:
+              values: ['credit', 'debit']
