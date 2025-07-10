@@ -270,6 +270,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+.DS_Store
 EOL
 
 # Set up virtual environment
