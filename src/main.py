@@ -11,7 +11,7 @@ def main():
     transactions_df["amount"] = transactions_df["amount"] * 1.1
     transactions_df.to_parquet("data/transactions_transformed.parquet", index=False)
 
-    # in memory is faster, but does not persist for forensics or visualization
+    # in memory is faster supposedly, but does not persist for forensics or visualization
     memory_conn = duckdb.connect(":memory:")
     memory_conn.execute(
         "CREATE TABLE transactions AS SELECT * FROM 'data/transactions.parquet'"

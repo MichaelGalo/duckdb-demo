@@ -274,8 +274,8 @@ EOL
 
 # Set up virtual environment
 cd $PROJECT_ROOT
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 
 # Upgrade pip and install requirements
 pip install --upgrade pip
