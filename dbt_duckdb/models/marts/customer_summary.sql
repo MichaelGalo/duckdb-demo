@@ -1,3 +1,5 @@
+{{config(materialized = 'table')}}
+
 select
   customer_id,
   count(*) as total_transactions,
@@ -12,5 +14,5 @@ select
   count(case when transaction_type = 'credit' then 1 end) as credit_count,
   count(case when transaction_type = 'debit' then 1 end) as debit_count
 
-from main.stg_transactions
+from {{ref('stg_transactions')}}
 group by customer_id

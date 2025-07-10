@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: main
+    description: Main schema containing raw transaction data
+    schema: main
+    tables:
+      - name: transactions
+        description: Raw transaction data from operational systems
+        columns:
+          - name: transaction_id
+            description: Unique identifier for each transaction
+            tests:
+              - unique
+              - not_null
+          - name: customer_id
+            description: Customer who made the transaction
+            tests:
+              - not_null
+          - name: amount
+            description: Transaction amount in dollars
+            tests:
+              - not_null
+          - name: transaction_date
+            description: Date when transaction occurred
+            tests:
+              - not_null
