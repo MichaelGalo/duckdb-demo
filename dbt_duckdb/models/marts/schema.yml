@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: customer_summary
+    description: Customer transaction summary with key metrics
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        tests:
+          - unique
+          - not_null
+
+      - name: total_transactions
+        description: Total number of transactions per customer
+        tests:
+          - not_null
+
+      - name: total_amount
+        description: Total transaction amount per customer
+        tests:
+          - not_null
